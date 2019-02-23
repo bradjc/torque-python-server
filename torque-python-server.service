@@ -1,0 +1,13 @@
+[Unit]
+Description=Receive Torque Pro Uploads
+After=networking.service
+
+[Service]
+ExecStart=/opt/torque-python-server/server.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=torque-python-server
+
+[Install]
+WantedBy=multi-user.target
