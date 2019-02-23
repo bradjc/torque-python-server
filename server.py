@@ -4,6 +4,7 @@ import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import urllib
 import datetime
+import os
 
 import arrow
 import influxdb
@@ -348,7 +349,8 @@ metadata = {}
 
 # Load in config information
 influx_conf = {}
-with open('influx.conf') as f:
+dir_path = os.path.dirname(os.path.realpath(__file__))
+with open('{}/influx.conf'.format(dir_path)) as f:
     for l in f:
         fields = l.split('=')
         if len(fields) == 2:
